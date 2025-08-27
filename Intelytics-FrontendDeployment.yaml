@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: intelytics-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: intelytics-frontend
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: intelytics-frontend
+    spec:
+      containers:
+      - name: intelytics-frontend
+        image: 798704874888.dkr.ecr.ap-southeast-1.amazonaws.com/intelytics-frontend:8
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+        envFrom:
+        - configMapRef:
+            name: intelytics-frontend-config
