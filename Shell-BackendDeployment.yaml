@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shellustad-backend
+  namespace: shell
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: shellustad-backend
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: shellustad-backend
+    spec:
+      containers:
+      - name: shellustad-backend
+        image: 798704874888.dkr.ecr.ap-southeast-1.amazonaws.com/shellustad-backend:1.0.25
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+        envFrom:
+        - configMapRef:
+            name: shellustaad-configmap
