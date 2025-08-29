@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: shellustad-frontend
-        image: 798704874888.dkr.ecr.ap-southeast-1.amazonaws.com/shellustad-frontend:1.0.10
+        image: 798704874888.dkr.ecr.ap-southeast-1.amazonaws.com/shellustad-frontend:12
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3000
