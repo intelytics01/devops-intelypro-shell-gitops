@@ -20,7 +20,7 @@ spec:
       serviceAccountName: intelytics
       containers:
       - name: intelytics-backend
-        image: 798704874888.dkr.ecr.ap-southeast-1.amazonaws.com/intelytics-backend:4
+        image: 798704874888.dkr.ecr.ap-southeast-1.amazonaws.com/intelytics-backend:6
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3000
